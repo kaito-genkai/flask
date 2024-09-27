@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}記事一覧{% endblock %}
+{% block content %}
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1>FLASK BLOG</h1>
+        <div class="mb-4">
+            <a href="/login" role="button" class="btn btn-primary">ログイン</a>
+            <a href="/signup" role="button" class="btn btn-info">ユーザー登録</a>
+        </div>
+        <p>最新のブログ記事</p>
+    </div>
+    <div class="row row-cols-3 g-4 ">
+        {% for post in posts %}
+        <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{post.title}}</h5>
+                <p class="card-text">{{ post.body[:10] }}</p>
+                <p>投稿日：{{post.created_at}}</p>
+                <a href="/{{ post.id }}/readmore" role="button" class="btn btn-primary">詳細</a>
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

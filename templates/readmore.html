@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{post.title}}{% endblock %}
+{% block content %}
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1>FLASK BLOG</h1>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">{{post.title}}</h2>
+                        <p class="card-text text-center">{{post.body}}</p>
+                        {% if post.img_name %}
+                            <img src="{{ url_for('static', filename='img/' + post.img_name) }}" class="img-fluid mb-3 d-block mx-auto" width="600" height="300">
+                        {% endif %}
+                        <p class="text-muted text-center">{{post.created_at}}</p>
+                        <hr>
+                        <div class="text-center">
+                            <a href="/" class="btn btn-secondary">ホームに戻る</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
